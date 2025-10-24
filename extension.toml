@@ -1,9 +1,9 @@
 id = "csharp"
 name = "C#"
-description = "C# support."
-version = "0.1.3"
+description = "C# support"
+version = "0.2.0"
 schema_version = 1
-authors = ["fminkowski <fminkowski@gmail.com>"]
+authors = ["nulifyer <zed-csharp-ext.caress448@passmail.net>"]
 repository = "https://github.com/zed-extensions/csharp"
 
 [language_servers.omnisharp]
@@ -13,3 +13,9 @@ language = "CSharp"
 [grammars.c_sharp]
 repository = "https://github.com/tree-sitter/tree-sitter-c-sharp"
 commit = "6563c3af3f03ec948d08f9325e4bbd072e4c6b99"
+
+[languages.csproj]
+name = "C# Project File"
+file_extensions = ["csproj"]
+grammar = "xml"
+scope = "source.xml"
