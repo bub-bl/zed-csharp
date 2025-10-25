@@ -1,12 +1,30 @@
-#
-# zed-csharp
-#
+# Rust/Cargo
+/target/
+Cargo.lock
+*.pdb
 
+# Zed extension build artifacts
 *.wasm
+/grammars/
 
-#
-# Rust
-#
+# IDE files
+.vscode/
+*.swp
+*.swo
+*~
 
-/target
-/grammars
+# OS files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Logs
+*.log
+
+# Temporary files
+*.tmp
+*.temp 
