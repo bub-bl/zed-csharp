@@ -6,8 +6,8 @@ schema_version = 1
 authors = ["nulifyer <zed-csharp-ext.caress448@passmail.net>"]
 repository = "https://github.com/Nulifyer/zed-csharp"
 
-[language_servers.omnisharp]
-name = "OmniSharp"
+[language_servers.csharp-language-server]
+name = "csharp-ls"
 language = "CSharp"
 
 [grammars.c_sharp]
