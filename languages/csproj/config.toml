@@ -1,0 +1,7 @@
+name = "C# Project File"
+grammar = "xml"
+path_suffixes = ["csproj", "props", "targets", "resx", "xml"]
+line_comments = []
+block_comment = ["<!-- ", " -->"]
+tab_size = 2
+hard_tabs = false

@@ -1,0 +1,6 @@
+name = "Razor"
+grammar = "html"
+path_suffixes = ["cshtml", "razor"]
+line_comments = ["@* ", " *@"]
+tab_size = 4
+hard_tabs = false
