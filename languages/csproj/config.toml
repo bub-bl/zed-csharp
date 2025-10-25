@@ -1,4 +1,0 @@
-name = "C# Project File"
-code_fence_block_name = "csproj"
-grammar = "xml"
-path_suffixes = ["csproj"]
