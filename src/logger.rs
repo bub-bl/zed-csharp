@@ -17,7 +17,6 @@ impl Logger {
         Self::instance().debug_log(message);
     }
 
-    #[allow(dead_code)]
     pub fn info(message: &str) {
         Self::instance().info_log(message);
     }
@@ -37,7 +36,6 @@ impl Logger {
         self.write_log("DEBUG", message);
     }
 
-    #[allow(dead_code)]
     fn info_log(&self, message: &str) {
         self.write_log("INFO", message);
     }
