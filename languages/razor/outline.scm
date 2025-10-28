@@ -1,10 +1,10 @@
-;; Outline for Razor files
+;; Code outline for Razor
 
-;; Functions
-(csharp_function_declaration name: (identifier) @name) @item
+;; Razor sections
+(razor_section) @item
 
-;; Types/Classes
-(csharp_class_declaration name: (identifier) @name) @item
+;; Razor blocks (code blocks)
+(razor_block) @item
 
-;; Components (Razor components)
-(component_definition name: (identifier) @name) @item
+;; HTML elements (for structure)
+(element) @item

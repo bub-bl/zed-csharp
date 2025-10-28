@@ -1,10 +1,14 @@
-;; Text objects for Razor
+;; Text objects for Razor (Vim navigation)
 
-;; Function/Method definitions
-(csharp_function_declaration) @function
+;; Code blocks as functions
+(razor_block) @function.around
 
-;; Type definitions
-(csharp_class_declaration) @type
+;; Razor sections
+(razor_section) @function.around
+
+;; HTML elements
+(element) @function.around
 
 ;; Comments
-(comment) @comment
+(razor_comment) @comment.around
+(html_comment) @comment.around

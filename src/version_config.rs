@@ -145,40 +145,27 @@ pub fn netcoredbg_config() -> VersionDirConfig {
         .build()
 }
 
-/// Create a configuration for VS Code C# extension
-pub fn vscode_csharp_config() -> VersionDirConfig {
-    VersionConfigBuilder::new("vscode-csharp", "dotnet/vscode-csharp")
+/// Create a configuration for csharp-ls (razzmatazz/csharp-language-server from NuGet)
+pub fn csharp_language_server_config() -> VersionDirConfig {
+    VersionConfigBuilder::new("csharp-language-server", "razzmatazz/csharp-language-server")
         .get_platform_string(|| {
-            use zed_extension_api as zed;
-            let (platform, arch) = zed::current_platform();
-            let platform_str = match (platform, arch) {
-                (zed::Os::Mac, zed::Architecture::Aarch64) => "darwin-arm64",
-                (zed::Os::Mac, zed::Architecture::X8664) => "darwin-x64",
-                (zed::Os::Linux, zed::Architecture::Aarch64) => "linux-arm64",
-                (zed::Os::Linux, zed::Architecture::X8664) => "linux-x64",
-                (zed::Os::Windows, zed::Architecture::Aarch64) => "win32-arm64",
-                (zed::Os::Windows, zed::Architecture::X8664) => "win32-x64",
-                _ => return Err("unsupported platform/architecture combination".to_string()),
-            };
-            Ok(platform_str.to_string())
+            Ok("nuget".to_string())
         })
-        .get_download_url(|version: &str, platform: &str| {
-            // For VSCode C# extension, we only use the version from GitHub releases
-            // The actual download happens through the VSCode gallery API
-            Ok(format!(
-                "https://ms-dotnettools.gallery.vsassets.io/_apis/public/gallery/publisher/ms-dotnettools/extension/csharp/{}/assetbyname/Microsoft.VisualStudio.Services.VSIXPackage?redirect=true&targetPlatform={}",
-                version, platform
-            ))
+        .get_download_url(|version: &str, _platform: &str| {
+            let url = format!(
+                "https://www.nuget.org/api/v2/package/csharp-ls/{}",
+                version
+            );
+            Ok(url)
         })
         .get_binary_path(|version_dir: &str| {
             use zed_extension_api as zed;
             let (platform, _) = zed::current_platform();
             let binary_name = match platform {
-                zed::Os::Windows => "Microsoft.CodeAnalysis.LanguageServer.exe",
-                _ => "Microsoft.CodeAnalysis.LanguageServer",
+                _ => "CSharpLanguageServer.dll",
             };
-            format!("{}/extension/.roslyn/{}", version_dir, binary_name)
+            format!("{}/tools/net9.0/any/{}", version_dir, binary_name)
         })
-        .binary_name_for_logging("Roslyn")
+        .binary_name_for_logging("csharp-language-server")
         .build()
 }

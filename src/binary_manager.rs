@@ -1,20 +1,20 @@
+use std::collections::HashMap;
 use std::fs;
 use std::io::Cursor;
 use zed_extension_api::{self as zed, http_client, Result};
 
 use crate::logger;
 use crate::path_utils;
-use crate::path_utils::normalize_path_to_absolute;
 use crate::version_config::VersionDirConfig;
 
 pub struct BinaryManager {
-    cached_version_dir: Option<String>,
+    version_dir_cache: HashMap<String, String>,
 }
 
 impl BinaryManager {
     pub fn new() -> Self {
         Self {
-            cached_version_dir: None,
+            version_dir_cache: HashMap::new(),
         }
     }
 
@@ -216,15 +216,13 @@ impl BinaryManager {
         let fn_name = format!("get_version_dir[{}]", config.prefix);
         logger::Logger::debug(&format!("{}: starting version check", fn_name));
 
-        // First check if we have a cached version directory
-        if let Some(cached_dir) = &self.cached_version_dir {
-            if fs::metadata(cached_dir).map_or(false, |stat| stat.is_dir()) {
-                logger::Logger::debug(&format!(
-                    "{}: using cached version directory: {}",
-                    fn_name, cached_dir
-                ));
-                return Ok(cached_dir.clone());
-            }
+        // Check cache first
+        if let Some(cached_path) = self.version_dir_cache.get(&config.prefix) {
+            logger::Logger::debug(&format!(
+                "{}: found cached version dir: {}",
+                fn_name, cached_path
+            ));
+            return Ok(cached_path.clone());
         }
 
         // Try to find the latest local version first
@@ -307,7 +305,7 @@ impl BinaryManager {
                 }
                 // Convert to absolute path before caching and returning
                 let absolute_version_dir = path_utils::normalize_path_to_absolute(&version_dir);
-                self.cached_version_dir = Some(absolute_version_dir.clone());
+                self.version_dir_cache.insert(config.prefix.clone(), absolute_version_dir.clone());
                 return Ok(absolute_version_dir);
             } else {
                 // Directory exists but is incomplete/corrupted, clean it up
@@ -446,7 +444,7 @@ impl BinaryManager {
 
         // Convert to absolute path before caching and returning
         let absolute_version_dir = path_utils::normalize_path_to_absolute(&version_dir);
-        self.cached_version_dir = Some(absolute_version_dir.clone());
+        self.version_dir_cache.insert(config.prefix.clone(), absolute_version_dir.clone());
         Ok(absolute_version_dir)
     }
 }

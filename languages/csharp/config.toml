@@ -3,6 +3,9 @@ code_fence_block_name = "csharp"
 grammar = "c_sharp"
 path_suffixes = ["cs"]
 line_comments = ["// ", "/// "]
+block_comment = ["/* ", " */"]
+tab_size = 4
+hard_tabs = false
 autoclose_before = ";:.,=}])>"
 brackets = [
     { start = "{", end = "}", close = true, newline = true },
