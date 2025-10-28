@@ -22,6 +22,11 @@ commit = "dd5e59721a5f8dae34604060833902b882023aaf"
 repository = "https://github.com/tris203/tree-sitter-razor"
 commit = "fe46ce5ea7d844e53d59bc96f2175d33691c61c5"
 
+[grammars.xml]
+repository = "https://github.com/tree-sitter-grammars/tree-sitter-xml"
+commit = "863dbc381f44f6c136a399e684383b977bb2beaa"
+path = "xml"
+
 [debug_adapters.coreclr]
 schema_path = "debug_adapter_schemas/netcoredbg.json"
 
