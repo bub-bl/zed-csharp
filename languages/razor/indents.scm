@@ -1,7 +1,14 @@
 ;; Indentation rules for Razor based on tree-sitter-razor grammar
 
-;; Indent after Razor control structures (they have braces)
+;; ============================================================================
+;; INDENT FOR RAZOR STRUCTURES
+;; ============================================================================
+
+;; Code blocks and sections
 (razor_block) @indent
+(razor_section) @indent
+
+;; Control structures
 (razor_if) @indent
 (razor_else_if) @indent
 (razor_else) @indent
@@ -13,9 +20,11 @@
 (razor_try) @indent
 (razor_catch) @indent
 (razor_finally) @indent
-(razor_section) @indent
 (razor_lock) @indent
 (razor_compound_using) @indent
 
-;; Indent in HTML elements
+;; ============================================================================
+;; INDENT FOR HTML ELEMENTS
+;; ============================================================================
+
 (element) @indent

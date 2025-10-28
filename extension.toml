@@ -8,11 +8,10 @@ repository = "https://github.com/Nulifyer/zed-csharp"
 
 [language_servers.csharp-language-server]
 name = "csharp-language-server"
-languages = ["CSharp", "Razor"]
+languages = ["CSharp"]
 
 [language_servers.csharp-language-server.language_ids]
 "CSharp" = "csharp"
-"Razor" = "razor"
 
 [grammars.c_sharp]
 repository = "https://github.com/tree-sitter/tree-sitter-c-sharp"
@@ -21,6 +20,18 @@ commit = "dd5e59721a5f8dae34604060833902b882023aaf"
 [grammars.razor]
 repository = "https://github.com/tris203/tree-sitter-razor"
 commit = "fe46ce5ea7d844e53d59bc96f2175d33691c61c5"
+
+[grammars.html]
+repository = "https://github.com/tree-sitter/tree-sitter-html"
+commit = "bfa075d83c6b97cd48440b3829ab8d24a2319809"
+
+[grammars.css]
+repository = "https://github.com/tree-sitter/tree-sitter-css"
+commit = "dda5cfc5722c429eaba1c910ca32c2c0c5bb1a3f"
+
+[grammars.javascript]
+repository = "https://github.com/tree-sitter/tree-sitter-javascript"
+commit = "44c892e0be055ac465d5eeddae6d3e194424e7de"
 
 [grammars.xml]
 repository = "https://github.com/tree-sitter-grammars/tree-sitter-xml"

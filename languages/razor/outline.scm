@@ -1,18 +1,26 @@
 ;; Code outline/navigation for Razor
 
-;; Page-level directives
+;; ============================================================================
+;; PAGE-LEVEL DIRECTIVES
+;; ============================================================================
+
 (razor_page_directive) @item
 (razor_model_directive) @item
 (razor_layout_directive) @item
 (razor_namespace_directive) @item
+(razor_using_directive) @item
 
-;; Sections for content organization
+;; ============================================================================
+;; SECTIONS AND BLOCKS
+;; ============================================================================
+
 (razor_section) @item
-
-;; Code blocks
 (razor_block) @item
 
-;; Control structures (for navigation)
+;; ============================================================================
+;; CONTROL STRUCTURES
+;; ============================================================================
+
 (razor_if) @item
 (razor_switch) @item
 (razor_for) @item
@@ -21,5 +29,8 @@
 (razor_do_while) @item
 (razor_try) @item
 
-;; HTML elements (for structure)
+;; ============================================================================
+;; HTML ELEMENTS
+;; ============================================================================
+
 (element) @item
