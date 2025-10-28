@@ -1,4 +1,2 @@
-;; Indentation rules for XML/csproj
-
-;; Indent after opening tags
-(element) @indent
+(STag ">" @end) @indent
+(EmptyElemTag "/>" @end) @indent
